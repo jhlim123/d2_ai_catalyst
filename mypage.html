@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <meta name="theme-color" content="#f5f5f7" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Catalyst" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>마이페이지 — AI Catalyst</title>
+  <link rel="apple-touch-icon" href="assets/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" class="nav-logo" />
+        <div class="nav-divider"></div>
+        <span class="nav-product">AI <span class="accent">Catalyst</span></span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html">홈</a>
+        <a href="courses.html">강의 둘러보기</a>
+        <a href="instructor.html">강의 개설</a>
+        <a href="mypage.html" class="active">마이페이지</a>
+      </div>
+      <a href="courses.html" class="nav-cta">강의 신청</a>
+      <button class="nav-toggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Dashboard Header -->
+  <section class="dash-header">
+    <div class="dash-header-inner">
+      <h1 class="dash-greeting" id="greet">안녕하세요</h1>
+      <p class="dash-greeting-sub" id="greet-sub">오늘도 한 걸음 더 가까이.</p>
+
+      <div class="stat-grid">
+        <div class="stat-card">
+          <div class="stat-label">수강 완료 강의</div>
+          <div class="stat-value" id="stat-courses">0</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">잔여 지원금</div>
+          <div class="stat-value accent" id="stat-subsidy">0원</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">환급 대기</div>
+          <div class="stat-value" id="stat-pending">0건</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">다음 강의</div>
+          <div class="stat-value" id="stat-next" style="font-size: 18px;">-</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab active" data-tab="enrolled">내 수강 내역</button>
+    <button class="tab" data-tab="refund">환급 신청 / 현황</button>
+    <button class="tab" data-tab="reviews">평점 작성</button>
+  </div>
+
+  <div class="dash-content">
+
+    <!-- Enrolled -->
+    <div data-tab-content="enrolled" id="enrolled-list"></div>
+
+    <!-- Refund -->
+    <div data-tab-content="refund" style="display:none;">
+      <div class="list-card" style="grid-template-columns: 1fr;">
+        <div>
+          <div class="list-card-title">새로운 환급 신청</div>
+          <div class="list-card-meta" style="margin-bottom: 16px;">
+            완료된 강의를 선택하고 강사에게 이체한 인증샷을 업로드하세요.
+          </div>
+
+          <div class="form-row">
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">완료된 강의</label>
+              <select class="form-select">
+                <option>2026.04.10 — Notion AI 회의록 정리</option>
+                <option>2026.03.22 — Perplexity 시장 리서치</option>
+              </select>
+            </div>
+            <div class="form-group" style="margin-bottom:0;">
+              <label class="form-label">이체 인증샷</label>
+              <input type="file" class="form-input" accept="image/*" />
+            </div>
+          </div>
+
+          <div style="margin-top: 20px; text-align: right;">
+            <button class="btn btn-dark btn-sm" data-action="refund">환급 신청 제출</button>
+          </div>
+        </div>
+      </div>
+
+      <h3 style="font-family: var(--font-display); font-size: 22px; font-weight: 600; margin: 36px 0 16px; letter-spacing: -0.02em;">환급 진행 현황</h3>
+      <div id="refund-list"></div>
+    </div>
+
+    <!-- Reviews -->
+    <div data-tab-content="reviews" style="display:none;">
+      <div class="list-card" style="grid-template-columns: 1fr;">
+        <div>
+          <div class="list-card-title">Perplexity로 시장 리서치 1시간 컷 — 윤재호</div>
+          <div class="list-card-meta" style="margin-bottom: 20px;">
+            2026.03.22 수강 완료 · 평점을 입력해야 환급 신청이 가능합니다
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">평점</label>
+            <div style="display:flex; gap:6px; font-size: 28px; color: #f5b800; cursor: pointer;">
+              <span>★</span><span>★</span><span>★</span><span>★</span><span style="color:#d2d2d7">★</span>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">한 줄 후기</label>
+            <textarea class="form-textarea" placeholder="동료들에게 도움이 될 후기를 남겨주세요"></textarea>
+            <span class="form-hint">익명/실명 선택 가능 · 운영진 검수 후 강의 페이지에 노출됩니다</span>
+          </div>
+          <div style="text-align: right;">
+            <button class="btn btn-dark btn-sm" data-action="refund">평점 등록</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" style="height:18px; opacity:0.6;" />
+        <span>© 2026 digitalDigm. AI Catalyst Pilot.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">소개</a>
+        <a href="courses.html">강의</a>
+        <a href="instructor.html">강사 신청</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    const u = window.AC_DATA.user;
+    const courses = window.AC_DATA.courses;
+    const enrollments = window.AC_DATA.myEnrollments;
+    const refunds = window.AC_DATA.myRefunds;
+
+    document.getElementById("greet").textContent = `안녕하세요, ${u.name}님.`;
+    document.getElementById("greet-sub").textContent = `${u.department} · 사번 ${u.employeeId}`;
+    document.getElementById("stat-courses").textContent = u.coursesCompleted;
+    document.getElementById("stat-subsidy").textContent =
+      u.subsidyRemaining > 0 ? u.subsidyRemaining.toLocaleString() + "원" : "사용 완료";
+    document.getElementById("stat-pending").textContent =
+      refunds.filter((r) => r.status === "pending").length + "건";
+    document.getElementById("stat-next").textContent = u.nextSession;
+
+    // Enrolled list
+    const badgeMap = {
+      upcoming: '<span class="badge badge-upcoming">수강 예정</span>',
+      completed: '<span class="badge badge-completed">수강 완료</span>'
+    };
+    document.getElementById("enrolled-list").innerHTML = enrollments
+      .map((e) => {
+        const c = courses.find((x) => x.id === e.courseId);
+        if (!c) return "";
+        const action =
+          e.status === "upcoming"
+            ? `<a href="course-detail.html?id=${c.id}" class="btn btn-outline btn-sm">상세보기</a>`
+            : e.rated
+            ? `<a href="course-detail.html?id=${c.id}" class="btn btn-outline btn-sm">강의 보기</a>`
+            : `<button class="btn btn-dark btn-sm">평점 작성</button>`;
+        return `
+        <div class="list-card">
+          <div>
+            <div class="list-card-title">${c.title}</div>
+            <div class="list-card-meta">${c.instructor} · ${e.date} · ${c.venue}</div>
+          </div>
+          ${badgeMap[e.status]}
+          ${action}
+        </div>`;
+      })
+      .join("");
+
+    // Refund list
+    const refundBadge = {
+      pending: '<span class="badge badge-pending">검토 중</span>',
+      approved: '<span class="badge badge-approved">환급 완료</span>'
+    };
+    document.getElementById("refund-list").innerHTML = refunds
+      .map((r) => {
+        const c = courses.find((x) => x.id === r.courseId);
+        if (!c) return "";
+        return `
+        <div class="list-card">
+          <div>
+            <div class="list-card-title">${c.title}</div>
+            <div class="list-card-meta">${r.amount.toLocaleString()}원 · 신청일 ${r.requestedAt}</div>
+          </div>
+          ${refundBadge[r.status]}
+          <span style="font-size:13px; color: var(--color-text-secondary);">
+            ${r.status === "approved" ? "익영업일 입금 완료" : "운영팀 검토 중"}
+          </span>
+        </div>`;
+      })
+      .join("");
+  </script>
+</body>
+</html>

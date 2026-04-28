@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Catalyst" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>강의 개설하기 — AI Catalyst</title>
+  <link rel="apple-touch-icon" href="assets/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" class="nav-logo" />
+        <div class="nav-divider"></div>
+        <span class="nav-product">AI <span class="accent">Catalyst</span></span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html">홈</a>
+        <a href="courses.html">강의 둘러보기</a>
+        <a href="instructor.html" class="active">강의 개설</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+      <a href="courses.html" class="nav-cta">강의 신청</a>
+      <button class="nav-toggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="hero" style="padding: 80px 22px 40px;">
+    <span class="hero-eyebrow">강의 개설</span>
+    <h1 class="hero-title" style="font-size: clamp(36px, 5vw, 56px);">
+      당신의 노하우를<br />
+      <span class="highlight">수익으로 만드세요.</span>
+    </h1>
+    <p class="hero-sub" style="font-size: clamp(17px, 1.8vw, 21px);">
+      2시간 강의로 최대 50만원. 사내 AI 멘토 입지까지.
+    </p>
+  </section>
+
+  <!-- Form -->
+  <section class="form-page">
+    <form id="instructor-form" onsubmit="event.preventDefault(); showSuccess();">
+
+      <div class="form-group">
+        <label class="form-label">강의 제목 *</label>
+        <input
+          class="form-input"
+          type="text"
+          placeholder="예: ChatGPT로 매주 5시간 아끼는 이메일 자동화"
+          required
+        />
+        <span class="form-hint">실무에서 얻는 가치를 한 줄로 표현해보세요</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">카테고리 *</label>
+          <select class="form-select" required>
+            <option value="">선택하세요</option>
+            <option>개발 · 코딩</option>
+            <option>디자인 · 이미지</option>
+            <option>마케팅 · 콘텐츠</option>
+            <option>기획 · 생산성</option>
+            <option>전략 · 리서치</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">사용 도구 *</label>
+          <input
+            class="form-input"
+            type="text"
+            placeholder="예: ChatGPT Enterprise, Notion AI"
+            required
+          />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">강의 요약 *</label>
+        <textarea
+          class="form-textarea"
+          placeholder="이 강의를 듣고 나면 무엇을 할 수 있게 되는지, 누구에게 도움이 되는지 적어주세요"
+          required
+        ></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">커리큘럼 (타임라인) *</label>
+        <textarea
+          class="form-textarea"
+          placeholder="00:00 — 오프닝&#10;00:15 — 핵심 개념 설명&#10;00:45 — 실습 ①&#10;01:30 — Q&A"
+          required
+        ></textarea>
+        <span class="form-hint">총 2시간 기준, 5~6개 항목으로 나누는 것을 권장합니다</span>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">희망 일시 *</label>
+          <input class="form-input" type="datetime-local" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label">회의실 *</label>
+          <select class="form-select" required>
+            <option value="">선택하세요 (FEZH 예약 시스템 연동)</option>
+            <option>FEZH 회의실 A · 오프라인</option>
+            <option>FEZH 회의실 B · 오프라인</option>
+            <option>FEZH 회의실 C · 오프라인</option>
+            <option>온라인 (Zoom)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">최소 인원 *</label>
+          <input class="form-input" type="number" value="4" min="4" max="10" required />
+          <span class="form-hint">최소 4명 (실습 집중도 유지)</span>
+        </div>
+        <div class="form-group">
+          <label class="form-label">최대 인원 *</label>
+          <input class="form-input" type="number" value="10" min="4" max="10" required />
+          <span class="form-hint">최대 10명 (소수 정예)</span>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">기대 결과물</label>
+        <textarea
+          class="form-textarea"
+          placeholder="수강생이 강의 종료 시 손에 쥐고 가는 것 (예: 본인 워크플로우용 GPTs 1개, 실전 프롬프트 템플릿 5종)"
+        ></textarea>
+      </div>
+
+      <div class="form-group" style="background: var(--color-bg-muted); padding: 24px; border-radius: var(--radius-lg);">
+        <label class="form-label">📌 운영 약관 동의</label>
+        <p style="font-size: 14px; color: var(--color-text-secondary); line-height: 1.6;">
+          ✓ 강의 종료 후 사용된 교안 및 프롬프트는 사내 자산으로 등록됨에 동의합니다.<br />
+          ✓ 사내 기밀 데이터를 외부 AI 도구에 입력하지 않을 것을 약속합니다.<br />
+          ✓ 본인이 부서장으로 있는 팀원을 강제로 동원하지 않을 것을 약속합니다.<br />
+          ✓ 평균 평점 3.0 미만 시 강의 개설이 일시 제한될 수 있음을 인지합니다.
+        </p>
+        <label style="display:flex; align-items:center; gap:8px; margin-top: 16px; font-size: 14px; cursor: pointer;">
+          <input type="checkbox" required /> 위 내용에 모두 동의합니다
+        </label>
+      </div>
+
+      <div class="form-actions">
+        <a href="index.html" class="btn btn-outline">취소</a>
+        <button type="submit" class="btn btn-dark">강의 개설 신청</button>
+      </div>
+    </form>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" style="height:18px; opacity:0.6;" />
+        <span>© 2026 digitalDigm. AI Catalyst Pilot.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">소개</a>
+        <a href="courses.html">강의</a>
+        <a href="instructor.html">강사 신청</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    function showSuccess() {
+      showModal({
+        icon: "✓",
+        title: "강의 개설이 신청되었습니다",
+        message:
+          "운영팀 검수 후 24시간 이내에 승인 결과를 알려드립니다.<br />승인 시 강의 목록에 자동으로 게시되며, 사내 메신저로 홍보 메시지를 받아볼 수 있습니다.",
+        confirm: "마이페이지로 이동",
+        confirmHref: "mypage.html"
+      });
+    }
+  </script>
+</body>
+</html>

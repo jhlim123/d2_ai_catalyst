@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Catalyst" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>강의 둘러보기 — AI Catalyst</title>
+  <link rel="apple-touch-icon" href="assets/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" class="nav-logo" />
+        <div class="nav-divider"></div>
+        <span class="nav-product">AI <span class="accent">Catalyst</span></span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html">홈</a>
+        <a href="courses.html" class="active">강의 둘러보기</a>
+        <a href="instructor.html">강의 개설</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+      <a href="instructor.html" class="nav-cta">강의 개설</a>
+      <button class="nav-toggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Page Header -->
+  <section class="hero" style="padding: 80px 22px 40px;">
+    <span class="hero-eyebrow">강의 둘러보기</span>
+    <h1 class="hero-title" style="font-size: clamp(36px, 5vw, 56px);">
+      지금 신청 가능한 강의.
+    </h1>
+    <p class="hero-sub" style="font-size: clamp(17px, 1.8vw, 21px); margin-bottom: 0;">
+      관심 분야를 선택하고, 마감 임박 강의는 빠르게 신청하세요.
+    </p>
+  </section>
+
+  <!-- Filters & Grid -->
+  <section style="padding: 0 22px 100px;">
+    <div class="container">
+      <div class="filter-bar">
+        <button class="filter-chip active" data-filter="all">전체</button>
+        <button class="filter-chip" data-filter="개발">개발 · 코딩</button>
+        <button class="filter-chip" data-filter="디자인">디자인 · 이미지</button>
+        <button class="filter-chip" data-filter="마케팅">마케팅 · 콘텐츠</button>
+        <button class="filter-chip" data-filter="기획">기획 · 생산성</button>
+        <button class="filter-chip" data-filter="전략">전략 · 리서치</button>
+      </div>
+      <div class="course-grid" id="all-courses"></div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" style="height:18px; opacity:0.6;" />
+        <span>© 2026 digitalDigm. AI Catalyst Pilot.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">소개</a>
+        <a href="courses.html">강의</a>
+        <a href="instructor.html">강사 신청</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    renderCourseCards("#all-courses");
+  </script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=5" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-title" content="AI Catalyst" />
+  <meta name="format-detection" content="telephone=no" />
+  <title>강의 상세 — AI Catalyst</title>
+  <link rel="apple-touch-icon" href="assets/logo.svg" />
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" class="nav-logo" />
+        <div class="nav-divider"></div>
+        <span class="nav-product">AI <span class="accent">Catalyst</span></span>
+      </div>
+      <div class="nav-menu">
+        <a href="index.html">홈</a>
+        <a href="courses.html" class="active">강의 둘러보기</a>
+        <a href="instructor.html">강의 개설</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+      <a href="instructor.html" class="nav-cta">강의 개설</a>
+      <button class="nav-toggle" aria-label="메뉴 열기"><span></span><span></span><span></span></button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="detail-hero">
+    <div class="detail-hero-inner">
+      <div class="breadcrumb">
+        <a href="index.html">홈</a> · <a href="courses.html">강의 둘러보기</a> · <span id="bc-tag">강의</span>
+      </div>
+      <h1 class="detail-title" id="detail-title">강의 제목</h1>
+      <p class="detail-sub" id="detail-summary">강의 요약</p>
+      <div class="detail-meta-row">
+        <span>📅 <strong id="detail-schedule">일정</strong></span>
+        <span>📍 <strong id="detail-venue">장소</strong></span>
+        <span>👥 <strong id="detail-seats">정원</strong></span>
+        <span>⭐ <strong id="detail-rating">평점</strong></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Body -->
+  <section class="detail-body">
+    <div>
+      <!-- Instructor -->
+      <div class="instructor-card">
+        <div class="instructor-avatar" id="inst-avatar">?</div>
+        <div>
+          <div class="instructor-name" id="inst-name">강사명</div>
+          <div class="instructor-meta" id="inst-meta">소속 · 경력</div>
+        </div>
+      </div>
+
+      <!-- Description -->
+      <div class="detail-section">
+        <h3>이 강의에서 배우는 것</h3>
+        <p id="detail-desc"></p>
+      </div>
+
+      <!-- Curriculum -->
+      <div class="detail-section">
+        <h3>커리큘럼</h3>
+        <ul class="curriculum" id="detail-curriculum"></ul>
+      </div>
+
+      <!-- Notice -->
+      <div class="detail-section">
+        <h3>참여 안내</h3>
+        <p>
+          · 강의 24시간 전까지 취소 가능, 이후 환불 불가합니다.<br />
+          · 무단 불참 시 향후 3개월간 회사 지원금 대상에서 제외됩니다.<br />
+          · 사내 기밀 데이터는 외부 AI 도구에 절대 입력하지 않습니다(보안 가이드 준수).<br />
+          · 강의 종료 후 평점 입력이 환급 신청의 필수 조건입니다.
+        </p>
+      </div>
+    </div>
+
+    <!-- Sidebar -->
+    <aside>
+      <div class="sidebar-card">
+        <div class="sidebar-price" id="side-price">50,000원</div>
+        <div class="sidebar-price-sub">✓ 회사 지원금으로 본인 부담 0원</div>
+
+        <button class="btn btn-primary btn-block" data-action="enroll" id="enroll-btn">
+          강의 신청하기
+        </button>
+
+        <div class="sidebar-info">
+          <div class="sidebar-info-row"><span>일정</span><strong id="side-schedule">-</strong></div>
+          <div class="sidebar-info-row"><span>장소</span><strong id="side-venue">-</strong></div>
+          <div class="sidebar-info-row"><span>잔여석</span><strong id="side-seats">-</strong></div>
+          <div class="sidebar-info-row"><span>강의시간</span><strong>2시간 (이론 1 + 실습 1)</strong></div>
+          <div class="sidebar-info-row"><span>결제방식</span><strong>P2P 이체 후 환급</strong></div>
+        </div>
+      </div>
+    </aside>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo.svg" alt="digitalDigm" style="height:18px; opacity:0.6;" />
+        <span>© 2026 digitalDigm. AI Catalyst Pilot.</span>
+      </div>
+      <div class="footer-links">
+        <a href="index.html">소개</a>
+        <a href="courses.html">강의</a>
+        <a href="instructor.html">강사 신청</a>
+        <a href="mypage.html">마이페이지</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/data.js"></script>
+  <script src="assets/script.js"></script>
+  <script>
+    // Query string에서 id 읽기, 없으면 첫 강의
+    const params = new URLSearchParams(location.search);
+    const id = parseInt(params.get("id") || "1", 10);
+    const c = window.AC_DATA.courses.find((x) => x.id === id) || window.AC_DATA.courses[0];
+
+    document.getElementById("bc-tag").textContent = c.tag;
+    document.getElementById("detail-title").textContent = c.title;
+    document.getElementById("detail-summary").textContent = c.summary;
+    document.getElementById("detail-schedule").textContent = c.schedule;
+    document.getElementById("detail-venue").textContent = c.venue;
+    document.getElementById("detail-seats").textContent = `${c.seats.taken} / ${c.seats.total}명`;
+    document.getElementById("detail-rating").textContent = `${c.rating} (${c.reviews}건 후기)`;
+
+    document.getElementById("inst-avatar").textContent = c.instructor.charAt(0);
+    document.getElementById("inst-name").textContent = c.instructor;
+    document.getElementById("inst-meta").textContent = c.department;
+
+    document.getElementById("detail-desc").textContent = c.summary +
+      " 본 강의는 디지털다임 사내 AI Catalyst 프로그램의 일환으로, 4~10명 소수 정예로 진행됩니다. " +
+      "이론 1시간 + 본인 업무 사례에 직접 적용해보는 실습 1시간으로 구성됩니다.";
+
+    document.getElementById("detail-curriculum").innerHTML = c.curriculum
+      .map(
+        (item) => `
+        <li>
+          <span class="curriculum-time">+${item.time}</span>
+          <div class="curriculum-content">
+            <h4>${item.title}</h4>
+            <p>${item.desc}</p>
+          </div>
+        </li>`
+      )
+      .join("");
+
+    const left = c.seats.total - c.seats.taken;
+    document.getElementById("side-schedule").textContent = c.schedule;
+    document.getElementById("side-venue").textContent = c.venue;
+    document.getElementById("side-seats").textContent = left === 0 ? "마감" : `${left}석 남음`;
+    document.getElementById("side-price").textContent = c.price.toLocaleString() + "원";
+
+    const enrollBtn = document.getElementById("enroll-btn");
+    enrollBtn.dataset.title = c.title;
+    if (left === 0) {
+      enrollBtn.textContent = "마감된 강의";
+      enrollBtn.disabled = true;
+      enrollBtn.style.opacity = 0.5;
+      enrollBtn.style.cursor = "not-allowed";
+      enrollBtn.removeAttribute("data-action");
+    }
+  </script>
+</body>
+</html>
